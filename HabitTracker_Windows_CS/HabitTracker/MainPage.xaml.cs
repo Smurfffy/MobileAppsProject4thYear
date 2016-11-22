@@ -142,10 +142,9 @@ namespace HabitTracker
             {
                 // Change 'MobileService' to the name of your MobileServiceClient instance.
                 // Sign-in using Facebook authentication.
-                user = await App.MobileService
-                    .LoginAsync(MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory);
-                message =
-                    string.Format("You are now signed in - {0}", user.UserId);
+                //user = await App.MobileService.LoginAsync(MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory);
+                user = await App.MobileService.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
+                message = string.Format("You are now signed in - {0}", user.UserId);
 
                 success = true;
             }
