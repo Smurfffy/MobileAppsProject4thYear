@@ -70,7 +70,7 @@
             <Grid x:Name="TitleGrid" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,16">
                 <StackPanel>
                     <TextBlock Foreground="#0094ff" FontFamily="Segoe UI Light" Margin="0,0,0,6">AZURE APP SERVICE</TextBlock>
-                    <TextBlock x:Name="TitleTextBlock" Foreground="Gray" FontFamily="Segoe UI Light" FontSize="20" >Try Mobile Apps</TextBlock>
+                    <TextBlock x:Name="TitleTextBlock" Foreground="Gray" FontFamily="Segoe UI Light" FontSize="20" >Habit Hero</TextBlock>
                 </StackPanel>
             </Grid>
 
@@ -86,7 +86,7 @@
                 </Grid.RowDefinitions>
 
                 <StackPanel Grid.Row="0">
-                    <local:QuickStartTask x:Name="quickStartTask" Number="1" Title="Insert a TodoItem" 
+                    <local:QuickStartTask x:Name="quickStartTask" Number="1" Title="Insert a Habit" 
                                       Description="Enter some text below and click Save to insert a new todo item into your database" />
 
                     <StackPanel x:Name="addItemPanel" Orientation="Horizontal">
