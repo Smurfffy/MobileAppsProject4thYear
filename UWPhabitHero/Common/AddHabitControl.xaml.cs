@@ -23,5 +23,23 @@ namespace UWPhabitHero.Common
         {
             this.InitializeComponent();
         }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            ClearTextBoxes();
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClearTextBoxes();
+        }
+
+        private void ClearTextBoxes()
+        {
+            HabitNameTextBox.Text = string.Empty;
+            QuitingTextBox.Text = string.Empty;
+        }
     }
 }
