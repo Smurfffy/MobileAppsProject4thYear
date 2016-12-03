@@ -65,15 +65,48 @@
                               ScrollViewer.VerticalScrollBarVisibility="Visible" 
                               VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                     <ListView x:Name="ListItems">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <CheckBox x:Name="CheckBoxComplete" 
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="Habit Name: "/>
+                                    <TextBlock Grid.Column="1" Text=""/>
+
+                                    <TextBlock Grid.Row="1" Text="Why you're Quiting: "/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1"  Text=""/>
+
+                                    <CheckBox Grid.Row="2" Grid.Column="0" x:Name="CheckBoxComplete" 
+                                          IsChecked="{Binding Complete, Mode=TwoWay}" 
+                                          Checked="CheckBoxComplete_Checked" 
+                                          MaxWidth="550"
+                                          VerticalAlignment="Center">
+                                        <!--<TextBlock Name="ItemText" Text="{Binding Text}" MaxWidth="550" HorizontalAlignment="Left" TextWrapping="WrapWholeWords"/>-->
+                                    </CheckBox>
+
+                                </Grid>
+                                <!--<CheckBox x:Name="CheckBoxComplete" 
                                           IsChecked="{Binding Complete, Mode=TwoWay}" 
                                           Checked="CheckBoxComplete_Checked" 
                                           MaxWidth="550"
                                           VerticalAlignment="Center">
                                     <TextBlock Name="ItemText" Text="{Binding Text}" MaxWidth="550" HorizontalAlignment="Left" TextWrapping="WrapWholeWords"/>
-                                </CheckBox>
+                                </CheckBox>-->
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

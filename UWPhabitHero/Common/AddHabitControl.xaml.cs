@@ -47,7 +47,7 @@ namespace UWPhabitHero.Common
         {
             var todoItem = new TodoItem();
             todoItem.Text = HabitNameTextBox.Text;
-            todoItem.Info = QuitingTextBox.Text;
+            //todoItem.Info = QuitingTextBox.Text;
 
             FireOnHabitSaved(todoItem);
 

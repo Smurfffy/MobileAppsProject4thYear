@@ -10,6 +10,7 @@
 using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Threading.Tasks;
+using UWPhabitHero.ViewModel;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -24,6 +25,7 @@ namespace UWPhabitHero
 {
     public sealed partial class MainPage : Page
     {
+        private MainPageViewModel _mainPageViewModel;
         private MobileServiceCollection<TodoItem, TodoItem> items;
 #if OFFLINE_SYNC_ENABLED
         private IMobileServiceSyncTable<TodoItem> todoTable = App.MobileService.GetSyncTable<TodoItem>(); // offline sync
@@ -40,11 +42,20 @@ namespace UWPhabitHero
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             HabitControl.OnHabitSaved += HabitControl_OnHabitSaved;  
+
+            if(_mainPageViewModel == null)
+            {
+                _mainPageViewModel = new MainPageViewModel();
+
+                DataContext = _mainPageViewModel;
+            }
+
+
         }
 
         private void HabitControl_OnHabitSaved(object sender, TodoItem e)
         {
-            throw new NotImplementedException();
+            _mainPageViewModel.AddNewHAbit(e);
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
