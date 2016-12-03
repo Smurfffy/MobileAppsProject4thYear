@@ -5,115 +5,52 @@
     xmlns:local="using:UWPhabitHero"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:HF="using:UWPhabitHero.Common"
     mc:Ignorable="d">
 
     <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
 
-        <Grid x:Name="ContentGrid" Margin="12">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <!--TitleGrid contains the name of the application and page title-->
-            <Grid x:Name="TitleGrid" Grid.Row="0" Margin="0,0,0,16">
-                <StackPanel>
-                    <TextBlock Foreground="#0094ff" FontFamily="Segoe UI Light" Margin="0,0,0,6">AZURE APP SERVICE</TextBlock>
-                    <TextBlock x:Name="TitleTextBlock" Foreground="Gray" FontFamily="Segoe UI Light" FontSize="20" >Habit Hero</TextBlock>
-                </StackPanel>
-            </Grid>
-
-            <!--ContentPanel - place additional content here-->
-            <Grid x:Name="ContentPanel" Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <StackPanel Grid.Row="0">
-
-                    <StackPanel x:Name="addItemPanel" Orientation="Horizontal">
-                        
-                        <Button x:Name="ButtonSave" Grid.Row="1" VerticalAlignment="Top" Margin="0,8,8,8" Click="ButtonSave_Click">
-                            <StackPanel Orientation="Horizontal">
-                                <SymbolIcon Symbol="Add"/>
-                                <TextBlock Margin="5">Add Habit</TextBlock>
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="ButtonRefresh" Click="ButtonRefresh_Click" Margin="72,10,0,0" Height="44"
-                              HorizontalAlignment="Center">
-                            <StackPanel Orientation="Horizontal">
-                                <SymbolIcon Symbol="Refresh"/>
-                                <TextBlock Margin="5">Refresh</TextBlock>
-                            </StackPanel>
-                        </Button>
-
-                    </StackPanel>
-                </StackPanel>
-
-            </Grid>
-
-            <Grid x:Name="ItemsGrid" Grid.Row="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="500"/>
-                </Grid.RowDefinitions>
-
-                <ScrollViewer Grid.Row="1" Margin="0,10,0,0" 
+        <ScrollViewer Grid.Row="2" Margin="0,10,0,0" 
                               ScrollViewer.VerticalScrollBarVisibility="Visible" 
                               VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                    <ListView x:Name="ListItems">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                        <RowDefinition/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <TextBlock Text="Habit Name: "/>
-                                    <TextBlock Grid.Column="1" Text="{Binding Text}"/>
-
-                                    <TextBlock Grid.Row="1" Text="Why you're Quiting: "/>
-                                    <TextBlock Grid.Row="1" Grid.Column="1"  Text=""/>
-
-                                    <CheckBox Grid.Row="2" Grid.Column="0" x:Name="CheckBoxComplete" 
+            <ListView x:Name="ListItems">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox x:Name="CheckBoxComplete" 
                                           IsChecked="{Binding Complete, Mode=TwoWay}" 
                                           Checked="CheckBoxComplete_Checked" 
                                           MaxWidth="550"
                                           VerticalAlignment="Center">
-                                        <!--<TextBlock Name="ItemText" Text="{Binding Text}" MaxWidth="550" HorizontalAlignment="Left" TextWrapping="WrapWholeWords"/>-->
-                                    </CheckBox>
+                            <TextBlock Name="ItemText" Text="{Binding Text}" MaxWidth="550" HorizontalAlignment="Left" TextWrapping="WrapWholeWords"/>
+                        </CheckBox>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
 
-                                </Grid>
-                                <!--<CheckBox x:Name="CheckBoxComplete" 
-                                          IsChecked="{Binding Complete, Mode=TwoWay}" 
-                                          Checked="CheckBoxComplete_Checked" 
-                                          MaxWidth="550"
-                                          VerticalAlignment="Center">
-                                    <TextBlock Name="ItemText" Text="{Binding Text}" MaxWidth="550" HorizontalAlignment="Left" TextWrapping="WrapWholeWords"/>
-                                </CheckBox>-->
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </ScrollViewer>
-            </Grid>
-        </Grid>
-        <HF:AddHabitControl x:Name="HabitControl" Grid.RowSpan="2" Visibility="Collapsed"/>
+        <Button Grid.Row="3" x:Name="ButtonRefresh" Click="ButtonRefresh_Click"  Height="44"
+                            RelativePanel.Below="quickStartTaskQuery"  HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon Symbol="Refresh"/>
+                <TextBlock Margin="5">Refresh</TextBlock>
+            </StackPanel>
+        </Button>
+
+        <StackPanel Grid.Row="4">
+            <TextBox MinWidth="300" Margin="5,7" Name="TextInput" KeyDown="TextInput_KeyDown" Height="44" Width="100"></TextBox>
+            <Button Name="ButtonSave"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,0"  Click="ButtonSave_Click">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Add"/>
+                    <TextBlock Margin="5">Save</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
     </Grid>
 
 </Page>
