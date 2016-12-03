@@ -43,15 +43,15 @@ namespace UWPhabitHero.Common
 #endif
         }
 
-        private async void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             var todoItem = new TodoItem();
             todoItem.Text = HabitNameTextBox.Text;
-            //todoItem.Info = QuitingTextBox.Text;
+            todoItem.Info = QuitingTextBox.Text;
 
             FireOnHabitSaved(todoItem);
 
-            await InsertTodoItem(todoItem);
+           // await InsertTodoItem(todoItem);
 
             ClearTextBoxes();
             Visibility = Visibility.Collapsed;
