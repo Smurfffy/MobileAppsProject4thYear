@@ -34,6 +34,17 @@ namespace UWPhabitHero
         public MainPage()
         {
             this.InitializeComponent();
+            Loaded += MainPage_Loaded;
+        }
+
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            HabitControl.OnHabitSaved += HabitControl_OnHabitSaved;  
+        }
+
+        private void HabitControl_OnHabitSaved(object sender, TodoItem e)
+        {
+            throw new NotImplementedException();
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
