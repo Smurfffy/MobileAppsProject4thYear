@@ -5,6 +5,7 @@
     xmlns:local="using:UWPhabitHero"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:HF="using:UWPhabitHero.Common"
     mc:Ignorable="d">
 
     <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -35,7 +36,7 @@
 
                     <StackPanel x:Name="addItemPanel" Orientation="Horizontal">
                         
-                        <Button Name="ButtonSave" Grid.Row="1" VerticalAlignment="Top" Margin="0,8,8,8" Click="ButtonSave_Click">
+                        <Button x:Name="ButtonSave" Grid.Row="1" VerticalAlignment="Top" Margin="0,8,8,8" Click="ButtonSave_Click">
                             <StackPanel Orientation="Horizontal">
                                 <SymbolIcon Symbol="Add"/>
                                 <TextBlock Margin="5">Add Habit</TextBlock>
@@ -79,6 +80,7 @@
                 </ScrollViewer>
             </Grid>
         </Grid>
+        <HF:AddHabitControl x:Name="HabitControl" Grid.RowSpan="2" Visibility="Collapsed"/>
     </Grid>
 
 </Page>

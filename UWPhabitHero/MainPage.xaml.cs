@@ -113,6 +113,7 @@ namespace UWPhabitHero
             /*var todoItem = new TodoItem { Text = TextInput.Text };
             TextInput.Text = "";
             await InsertTodoItem(todoItem);*/
+            HabitControl.Visibility = Visibility.Visible;
         }
 
         private async void CheckBoxComplete_Checked(object sender, RoutedEventArgs e)
