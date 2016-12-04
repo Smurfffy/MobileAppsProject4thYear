@@ -6,10 +6,10 @@
 I set out to create a Universal Windows Application. My app Idea is based around bad habits and tracking them and being able to handle them. The App is explained below. To develop this app I used alot of techniques learnt in our labs throughout the semester and I also used msdns documentation on technologies I used in this app.
 
 The app uses aspects of:
-+Azure Mobile App Service (Authentication, Cloud Storage)
-+MVVM
-+Observable Collections
-+Async - Await.
++ Azure Mobile App Service (Authentication, Cloud Storage)
++ MVVM
++ Observable Collections
++ Async - Await.
 
 ## User Guide
 The user will be greeted with a simple and clean layout when the start the app. Here the user must first sign in using the sign in button or else the user will be told they are not authorised to use the app.
