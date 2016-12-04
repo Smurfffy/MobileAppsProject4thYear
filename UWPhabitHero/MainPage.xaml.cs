@@ -150,5 +150,11 @@ namespace UWPhabitHero
         }
 #endif
         #endregion
+
+        private void AddHabitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //open the add habit control
+            HabitControl.Visibility = Visibility.Visible;
+        }
     }
 }
