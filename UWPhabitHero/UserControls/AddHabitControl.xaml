@@ -32,7 +32,7 @@
             <TextBox x:Name="ReasonTxtBox" Height="100"/>
         </StackPanel>
 
-        <Button x:Name="SaveHabitBtn" Grid.Row="3" Content="Save Habit" HorizontalAlignment="Left"/>
-        <Button x:Name="CancelBtn" Grid.Row="3" Content="Cancel" HorizontalAlignment="Right"/>
+        <Button x:Name="SaveHabitBtn" Grid.Row="3" Content="Save Habit" HorizontalAlignment="Left" Click="SaveHabitBtn_Click"/>
+        <Button x:Name="CancelBtn" Grid.Row="3" Content="Cancel" HorizontalAlignment="Right" Click="CancelBtn_Click"/>
     </Grid>
 </UserControl>
