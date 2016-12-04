@@ -60,7 +60,7 @@ namespace UWPhabitHero
 #if OFFLINE_SYNC_ENABLED
             await InitLocalStoreAsync(); // offline sync
 #endif
-            ButtonRefresh_Click(this, null);
+            //ButtonRefresh_Click(this, null);
         }
 
         private async Task InsertTodoItem(TodoItem todoItem)
@@ -175,5 +175,50 @@ namespace UWPhabitHero
             //open the add habit control
             HabitControl.Visibility = Visibility.Visible;
         }
+
+        // Define a member variable for storing the signed-in user. 
+        private MobileServiceUser user;
+
+        // Define a method that performs the authentication process
+        // using a Facebook sign-in. 
+        private async System.Threading.Tasks.Task<bool> AuthenticateAsync()
+        {
+            string message;
+            bool success = false;
+            try
+            {
+                // Change 'MobileService' to the name of your MobileServiceClient instance.
+                // Sign-in using Facebook authentication.
+                user = await App.MobileService
+                    .LoginAsync(MobileServiceAuthenticationProvider.Facebook);
+                message =
+                    string.Format("You are now signed in - {0}", user.UserId);
+
+                success = true;
+            }
+            catch (InvalidOperationException)
+            {
+                message = "You must log in. Login Required";
+            }
+
+            var dialog = new MessageDialog(message);
+            dialog.Commands.Add(new UICommand("OK"));
+            await dialog.ShowAsync();
+            return success;
+        }
+
+        private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
+        {
+            // Login the user and then load data from the mobile app.
+            if (await AuthenticateAsync())
+            {
+                // Switch the buttons and load items from the mobile app.
+                ButtonLogin.Visibility = Visibility.Collapsed;
+                ButtonSave.Visibility = Visibility.Visible;
+                //await InitLocalStoreAsync(); //offline sync support.
+                await RefreshTodoItems();
+            }
+        }
+
     }
 }
