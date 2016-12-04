@@ -107,6 +107,8 @@
     <Compile Include="UserControls\AddHabitControl.xaml.cs">
       <DependentUpon>AddHabitControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\MainPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

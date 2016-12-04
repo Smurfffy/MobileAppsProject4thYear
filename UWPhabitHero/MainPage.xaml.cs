@@ -10,6 +10,7 @@
 using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Threading.Tasks;
+using UWPhabitHero.ViewModel;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -30,7 +31,7 @@ namespace UWPhabitHero
 #else
         private IMobileServiceTable<TodoItem> todoTable = App.MobileService.GetTable<TodoItem>();
 #endif
-
+        private MainPageViewModel _mainPageViewModel;
         public MainPage()
         {
             this.InitializeComponent();
@@ -40,11 +41,18 @@ namespace UWPhabitHero
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
             HabitControl.OnHabitSaved += HabitControl_OnHabitSaved;
+
+            if(_mainPageViewModel == null)
+            {
+                _mainPageViewModel = new MainPageViewModel();
+                DataContext = _mainPageViewModel;
+            }   
         }
 
         private void HabitControl_OnHabitSaved(object sender, DataModel.Habit e)
         {
-            throw new NotImplementedException();
+            _mainPageViewModel.AddNewHabit(e);
+
         }
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)

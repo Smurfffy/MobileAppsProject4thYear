@@ -26,6 +26,40 @@
             <TextBlock x:Name="TitleTextBlock" Foreground="Gray" FontFamily="Segoe UI Light" FontSize="20" >Habit Hero</TextBlock>
         </StackPanel>
 
+        <ListView x:Name="HabitListView" Grid.Row="2" ItemsSource="{Binding HabitList}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Habit Name: "/>
+                        <TextBlock Grid.Column="1" Text="{Binding Name}"/>
+
+                        <TextBlock Grid.Row="1" Text="Habit Rating " />
+                        <TextBlock Grid.Row="1"  Grid.Column="1" Text="{Binding Rating}" />
+
+                        <TextBlock Grid.Row="2"  Text="Why You're Quiting" />
+                        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding Reason}" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
         <StackPanel Grid.Row="3">
             <ScrollViewer  Margin="0,10,0,0" 
                               ScrollViewer.VerticalScrollBarVisibility="Visible" 
