@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UWPhabitHero.ViewModel
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged // Base view model to notify us when a property has been changed
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(String propertyName)

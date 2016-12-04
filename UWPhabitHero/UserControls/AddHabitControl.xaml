@@ -17,21 +17,25 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
+        <!--User controls with A textBlock and Textbox for input-->
         <StackPanel Grid.Row="0" Orientation="Vertical">
             <TextBlock Text="Habit Name: "/>
             <TextBox x:Name="HabitNameTxtBox"/>
         </StackPanel>
 
+        <!--User controls with A textBlock and Textbox for input-->
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <TextBlock Text="Habit Rating Out of 10:"/>
             <TextBox x:Name="RatingTxtBox"/>
         </StackPanel>
 
+        <!--User controls with A textBlock and Textbox for input-->
         <StackPanel Grid.Row="2" Orientation="Vertical">
             <TextBlock Text="Why You're Quiting "/>
             <TextBox x:Name="ReasonTxtBox" Height="100"/>
         </StackPanel>
 
+        <!--User controls save and add button. add button saves user inputed data to the object-->
         <Button x:Name="SaveHabitBtn" Grid.Row="3" Content="Save Habit" HorizontalAlignment="Left" Click="SaveHabitBtn_Click"/>
         <Button x:Name="CancelBtn" Grid.Row="3" Content="Cancel" HorizontalAlignment="Right" Click="CancelBtn_Click"/>
     </Grid>

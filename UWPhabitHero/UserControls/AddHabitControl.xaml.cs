@@ -20,14 +20,14 @@ namespace UWPhabitHero.UserControls
 {
     public sealed partial class AddHabitControl : UserControl
     {
-        public event EventHandler<Habit> OnHabitSaved;
+        public event EventHandler<Habit> OnHabitSaved; // The even handler for when the habit item is saved
 
         public AddHabitControl()
         {
             this.InitializeComponent();
         }
 
-        private void SaveHabitBtn_Click(object sender, RoutedEventArgs e)
+        private void SaveHabitBtn_Click(object sender, RoutedEventArgs e) // Adds text in the text box to the habit object to be displayed in the list
         {
             //fire event for data
             var newHabit = new Habit();
@@ -41,13 +41,13 @@ namespace UWPhabitHero.UserControls
             Visibility = Visibility.Collapsed;
         }
 
-        private void CancelBtn_Click(object sender, RoutedEventArgs e)
+        private void CancelBtn_Click(object sender, RoutedEventArgs e) //Clears the text boxes and exits the user control
         {
             Visibility = Visibility.Collapsed;
             ClearTxtBoxes();
         }
 
-        private void ClearTxtBoxes()
+        private void ClearTxtBoxes() // Method for clearing the textboxs
         {
             // Clears the text boxes
             HabitNameTxtBox.Text = string.Empty;
@@ -55,7 +55,7 @@ namespace UWPhabitHero.UserControls
             ReasonTxtBox.Text = string.Empty;
         }
 
-        private void FireOnHabitSaved(Habit newHabit)
+        private void FireOnHabitSaved(Habit newHabit) 
         {
             OnHabitSaved?.Invoke(null, newHabit);
         }

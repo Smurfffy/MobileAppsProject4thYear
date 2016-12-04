@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Grid x:Name="LayoutRoot" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
+        <Grid.RowDefinitions> <!--defines the grid rows-->
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
@@ -18,14 +18,17 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
+        <!--The Button control for adding habits-->
         <Button x:Name="AddHabitBtn" Grid.Row="1" Content ="Add Habit" HorizontalAlignment="Left" Click="AddHabitBtn_Click"></Button>
         <Button Grid.Row="1" Content="Delete Habit" HorizontalAlignment="Right"></Button>
 
+        <!--The Headers for the app page-->
         <StackPanel Grid.Row="0">
             <TextBlock Foreground="#0094ff" FontFamily="Segoe UI Light" Margin="0,0,0,6">AZURE APP SERVICE</TextBlock>
             <TextBlock x:Name="TitleTextBlock" Foreground="Gray" FontFamily="Segoe UI Light" FontSize="20" >Habit Hero</TextBlock>
         </StackPanel>
 
+        <!--THe List view for the habits added by the user-->
         <ListView x:Name="HabitListView" Grid.Row="2" ItemsSource="{Binding HabitList}">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
@@ -60,6 +63,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <!--List view for the todo items added by the user-->
         <StackPanel Grid.Row="3">
             <ScrollViewer  Margin="0,10,0,0" 
                               ScrollViewer.VerticalScrollBarVisibility="Visible" 
@@ -79,8 +83,9 @@
                 </ListView>
             </ScrollViewer>
         </StackPanel>
-        
 
+
+        <!--The button control for refreshing items in the todo listview-->
         <Button Grid.Row="4" x:Name="ButtonRefresh" Click="ButtonRefresh_Click"  Height="44"
                             RelativePanel.Below="quickStartTaskQuery"  HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal">
@@ -89,6 +94,7 @@
             </StackPanel>
         </Button>
 
+        <!--The button and textbox controls for adding items to the todo list view-->
         <StackPanel Grid.Row="5">
             <TextBox MinWidth="300" Margin="5,7" Name="TextInput" KeyDown="TextInput_KeyDown" Height="44" Width="100"></TextBox>
             <Button Name="ButtonSave" HorizontalAlignment="Center" Visibility="Collapsed" Margin="0,8,8,0" 
@@ -107,6 +113,7 @@
             </Button>
         </StackPanel>
 
+        <!--Adds the habit user control to the app-->
         <HF:AddHabitControl x:Name="HabitControl" Grid.RowSpan="2" Visibility="Collapsed" />
     </Grid>
 

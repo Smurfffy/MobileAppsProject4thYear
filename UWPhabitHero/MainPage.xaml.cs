@@ -49,13 +49,13 @@ namespace UWPhabitHero
             }   
         }
 
-        private void HabitControl_OnHabitSaved(object sender, DataModel.Habit e)
+        private void HabitControl_OnHabitSaved(object sender, DataModel.Habit e) // Adds the new habit to the list view
         {
             _mainPageViewModel.AddNewHabit(e);
 
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e) //initialy loaded the todo item list when the app starts
         {
 #if OFFLINE_SYNC_ENABLED
             await InitLocalStoreAsync(); // offline sync
@@ -75,7 +75,7 @@ namespace UWPhabitHero
 #endif
         }
 
-        private async Task RefreshTodoItems()
+        private async Task RefreshTodoItems() // Refreshes the todo item list but only if the user is signed in
         {
             MobileServiceInvalidOperationException exception = null;
             try
@@ -102,7 +102,7 @@ namespace UWPhabitHero
             }
         }
 
-        private async Task UpdateCheckedTodoItem(TodoItem item)
+        private async Task UpdateCheckedTodoItem(TodoItem item) //Removes the todo item when the checkbox is checked
         {
             // This code takes a freshly completed TodoItem and updates the database.
 			// After the MobileService client responds, the item is removed from the list.
@@ -115,7 +115,7 @@ namespace UWPhabitHero
 #endif
         }
 
-        private async void ButtonRefresh_Click(object sender, RoutedEventArgs e)
+        private async void ButtonRefresh_Click(object sender, RoutedEventArgs e) // Refreshes the todo listview
         {
             ButtonRefresh.IsEnabled = false;
 
@@ -127,14 +127,14 @@ namespace UWPhabitHero
             ButtonRefresh.IsEnabled = true;
         }
 
-        private async void ButtonSave_Click(object sender, RoutedEventArgs e)
+        private async void ButtonSave_Click(object sender, RoutedEventArgs e) // saves items to the todo item list
         {
             var todoItem = new TodoItem { Text = TextInput.Text };
             TextInput.Text = "";
             await InsertTodoItem(todoItem);
         }
 
-        private async void CheckBoxComplete_Checked(object sender, RoutedEventArgs e)
+        private async void CheckBoxComplete_Checked(object sender, RoutedEventArgs e) //Handles a todo item list with a checked box
         {
             CheckBox cb = (CheckBox)sender;
             TodoItem item = cb.DataContext as TodoItem;
@@ -172,7 +172,7 @@ namespace UWPhabitHero
 
         private void AddHabitBtn_Click(object sender, RoutedEventArgs e)
         {
-            //open the add habit control
+            //opens the add habit control for the user
             HabitControl.Visibility = Visibility.Visible;
         }
 
@@ -198,7 +198,7 @@ namespace UWPhabitHero
             }
             catch (InvalidOperationException)
             {
-                message = "You must log in. Login Required";
+                message = "You must log in. Login Required"; // displays when users arent signed in
             }
 
             var dialog = new MessageDialog(message);
